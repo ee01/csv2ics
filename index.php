@@ -16,7 +16,8 @@ use Spatie\SimpleExcel\SimpleExcelReader;
 $calendar = new Calendar();
 // $calendar->setProdId('-//My Company//Cool Calendar App//EN');
 
-$url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQvqPN7XRE_QHqz5HfTuN6wCPNBxkeeLtiR_vtfyHbIN9mCgi_8DH0dnqhZJKZizKJTOG2tGkTugf--/pub?gid=0&single=true&output=csv';
+$gid = $_GET['gid'] ? $_GET['gid'] : 0;
+$url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQvqPN7XRE_QHqz5HfTuN6wCPNBxkeeLtiR_vtfyHbIN9mCgi_8DH0dnqhZJKZizKJTOG2tGkTugf--/pub?gid='.$gid.'&single=true&output=csv';
 $content = file_get_contents($url);
 $path = 'csv/Team.csv';
 file_put_contents($path, $content);
