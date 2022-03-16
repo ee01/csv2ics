@@ -1,0 +1,13 @@
+{
+    "name": "esone/csv2ics",
+    "require": {
+        "jsvrcek/ics": "^0.8.2",
+        "spatie/simple-excel": "^1.13"
+    },
+    "authors": [
+        {
+            "name": "Esone",
+            "email": "01@eexx.me"
+        }
+    ]
+}
