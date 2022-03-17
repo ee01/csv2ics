@@ -3,13 +3,13 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Jsvrcek\ICS\Model\Calendar;
 use Jsvrcek\ICS\Model\CalendarEvent;
+use Jsvrcek\ICS\Model\CalendarAlarm;
 use Jsvrcek\ICS\Model\Relationship\Attendee;
 use Jsvrcek\ICS\Model\Relationship\Organizer;
 
 use Jsvrcek\ICS\Utility\Formatter;
 use Jsvrcek\ICS\CalendarStream;
 use Jsvrcek\ICS\CalendarExport;
-
 use Spatie\SimpleExcel\SimpleExcelReader;
 
 //setup calendar
@@ -31,7 +31,7 @@ $rows->each(function(array $row) use ($calendar) {
     $startTime = isset($row['Start Time'])?$row['Start Time']:'';
     $endDate = isset($row['End Date'])?$row['End Date']:'';
     $endTime = isset($row['End Time'])?$row['End Time']:'';
-    //new event
+    // new event
     $event = new CalendarEvent();
     $event->setSummary($row['Subject'])
     ->setDescription($row['Description']);
@@ -39,6 +39,15 @@ $rows->each(function(array $row) use ($calendar) {
     if ($endDate || $endTime) $event->setEnd(new \DateTime($endDate . ' ' . $endTime));
     $event->setAllDay(strtolower($row['All Day Event']) == 'true');
     $event->setUid(md5($row['Subject']));
+    // set alarm
+    $alarmDisplay = new CalendarAlarm();
+    $alarmDisplay->setAction("display");
+    $alarmDisplay->setTrigger($event->getStart());
+    // $alarmDisplay->setRepeat(1);
+    // $alarmDisplay->setDuration(new \DateInterval('PT15M'));
+    $alarmDisplay->setDescription("This is a team reminder for milestones.");
+    $event->addAlarm($alarmDisplay);
+
     $calendar->addEvent($event);
 });
 
