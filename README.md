@@ -27,13 +27,13 @@ Now you can get sid: `2PACX-1vScttckt69huYmeZR1IvHh_dI-yBQ2hUvcd3Q3Q5YYmL3Yy-mZg
 
 ## Credits
 
- * Esone Qiu at [ee01](https://github.com/ee01).
+ * Esone Qiu at [github](https://github.com/ee01).
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2022 Justin Svrcek
+Copyright (c) 2022 Esone Qiu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
