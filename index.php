@@ -39,7 +39,7 @@ $rows->each(function(array $row) use ($calendar) {
     if ($startDate || $startTime) $event->setStart(new \DateTime($startDate . ' ' . $startTime));
     if ($endDate || $endTime) $event->setEnd(new \DateTime($endDate . ' ' . $endTime));
     $event->setAllDay(strtolower($row['All Day Event']) == 'true');
-    $event->setUid(md5($row['Subject']));
+    $event->setUid(md5($row['Subject'] . $startDate));
     // set alarm
     $alarmDisplay = new CalendarAlarm();
     $alarmDisplay->setAction("display");
