@@ -32,6 +32,7 @@ $rows->each(function(array $row) use ($calendar) {
     $startTime = isset($row['Start Time'])?$row['Start Time']:'';
     $endDate = isset($row['End Date'])?$row['End Date']:'';
     $endTime = isset($row['End Time'])?$row['End Time']:'';
+    if (!$startDate && !$startTime) return true;
     // new event
     $event = new CalendarEvent();
     $event->setSummary($row['Subject'])
